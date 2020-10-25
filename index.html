@@ -30,7 +30,15 @@
       <!-- 白鯨攻略戦タイトル -->
       <div class="row">
         <div class="col-md-12 center">
-          <h1 id="title">白鯨攻略戦</h1>
+          <h1 id="title" class="title">白鯨攻略戦</h1>
+          <!-- 突破率表示 -->
+          <div id="syouhai" style="display: none;">
+            <label id="toppa">突破率:</label>
+            <label id="katiCount"></label>
+            <label id="sura">/</label>
+            <label id="allbattle"></label>
+          </div>
+          <br>
           <audio src="hakugei.mp3" hidden id="hakugeibgm"></audio>
         </div>
       </div>
@@ -41,8 +49,8 @@
           <label>ゼロからルーレット<input type=" text" id="zerokara" readonly></label>
         </div>
         <div>
-          <input type="button" value="ルーレット開始" id="ru-reto">
-        </div>
+          <input type="button" value="ルーレット開始" id="ru-reto" class="button">
+        </div><br>
       </div>
 
       <!-- 継続率 -->
@@ -51,9 +59,11 @@
           <label>継続率<input type=" text" id="keizokuritu" readonly>%</label>
         </div>
         <div>
-          <input type="button" value="継続率抽選" id="Start" disabled>
-        </div>
+          <input type="button" value="継続率抽選" id="Start" disabled class="button">
+        </div><br>
+        <video controls style="display: none;" src="sinimodori.mp4" id="sinimodori" class="video"></video>
         <video controls style="display: none;" src="hanasuki.mp4" id="hanasuki" class="video"></video>
+        <video controls style="display: none;" src="victory.mp4" id="victory" class="video"></video>
       </div>
 
       <!-- 一戦目 -->
@@ -62,9 +72,8 @@
           <label>一戦目<input type="text" id="hantei1" readonly></label>
         </div>
         <div>
-          <input type="button" value="一戦目プッシュ" id="1push" disabled>
-        </div>
-        <video controls style="display: none;" src="sinimodori.mp4" id="sinimodori" class="video"></video>
+          <input type="button" value="一戦目プッシュ" id="1push" disabled class="button">
+        </div><br>
       </div>
 
       <!-- 二戦目 -->
@@ -73,8 +82,8 @@
           <label>二戦目<input type="text" id="hantei2" readonly></label>
         </div>
         <div>
-          <input type="button" value="二戦目プッシュ" id="2push" disabled>
-        </div>
+          <input type="button" value="二戦目プッシュ" id="2push" disabled class="button">
+        </div><br>
       </div>
 
       <!-- 三戦目 -->
@@ -83,18 +92,14 @@
           <label>三戦目<input type="text" id="hantei3" readonly></label>
         </div>
         <div>
-          <input type="button" value="三戦目プッシュ" id="3push" disabled>
+          <input type="button" value="三戦目プッシュ" id="3push" disabled class="button">
         </div>
-        <div class="row">
-          <div class="col-md-12">
-            <video controls style="display: none;" src="victory.mp4" id="victory" class="video"></video>
-          </div>
-        </div>
+        <br>
       </div>
 
       <!-- 再挑戦 -->
       <div>
-        <input type="button" value="再挑戦" id="reset" disabled>
+        <input type="button" value="再挑戦" id="reset" disabled class="button replay">
       </div>
     </div>
   </center>

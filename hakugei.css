@@ -1,3 +1,23 @@
+.title{
+    font-size: 80px;
+    cursor: pointer;
+}
+
+.button{
+    cursor: pointer;
+    font-size: 20px;
+}
+
 .video{
     width: 100%;
+}
+
+label{
+    font-size: 19px;
+}
+
+.replay{
+    width: 40%;
+    height: 60px;
+    font-size: 30px;
 }

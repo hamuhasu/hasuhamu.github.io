@@ -9,6 +9,9 @@ $(function () {
 
     var array = [];
     var count = 3;
+    var syouri = 0;
+    var totalbattle = 0;
+    $("#katiCount").text(syouri);
 
     // ルーレットボタン押下時
     $("#ru-reto").click(function () {
@@ -58,20 +61,33 @@ $(function () {
     $("#1push").click(function () {
         if ($("#keizokuritu").val() != "") {
             var kekka = hiki();
+            // 1/32で花は好きが出現
             if (hana() == 1) {
-                // 1/32で花は好きが出現
+                // 花は好きが再生される
                 $("#hantei1").val("花は好き？");
                 $("#hanasuki").get(0).load();
                 $("#hanasuki").get(0).play();
                 $("#hanasuki").show();
+                // 再挑戦ボタン活性化
                 $("#reset").prop("disabled", false);
+                // 勝利数を増やす
+                syouri = syouri + 1;
+                $("#katiCount").text(syouri);
+                // 挑戦数を増やす
+                totalbattle = totalbattle + 1;
+                $("#allbattle").text(totalbattle);
+                // 突破率を表示させる
+                $("#syouhai").show();
             }
+            // 花は好きが出現しなかった場合
             else {
+                // 白鯨ストックがあったら消化
                 if (stock == 2) {
                     stock = stock - 1;
                     $("#hantei1").val("撃破アイコン");
                     $("#2push").prop("disabled", false);
                 }
+                // 白鯨ストックがあったら消化
                 else if (stock == 1) {
                     stock = stock - 1;
                     $("#hantei1").val("撃破アイコン");
@@ -95,7 +111,13 @@ $(function () {
                         }
                         else {
                             $("#hantei1").val("一戦目敗北");
+                            // 再挑戦ボタン活性化
                             $("#reset").prop("disabled", false);
+                            // 挑戦数を増やす
+                            totalbattle = totalbattle + 1;
+                            $("#allbattle").text(totalbattle);
+                            // 突破率を表示させる
+                            $("#syouhai").show();
                         }
                     }
                 }
@@ -108,23 +130,35 @@ $(function () {
     $("#2push").click(function () {
         if ($("#keizokuritu").val() != "") {
             var kekka = hiki();
+            // 1/32で花は好きが出現
             if (hana() == 1) {
-                // 1/32で花は好きが出現
+                // 花は好きが再生される
                 $("#hantei2").val("花は好き？");
                 $("#hanasuki").get(0).load();
                 $("#hanasuki").get(0).play();
                 $("#hanasuki").show();
+                // 再挑戦ボタン活性化
                 $("#reset").prop("disabled", false);
+                // 勝利数を増やす
+                syouri = syouri + 1;
+                $("#katiCount").text(syouri);
+                // 挑戦数を増やす
+                totalbattle = totalbattle + 1;
+                $("#allbattle").text(totalbattle);
+                // 突破率を表示させる
+                $("#syouhai").show();
             }
+            // 花は好きが出現しなかった場合
             else {
-
+                // 白鯨ストックがあったら消化
                 if (stock == 1) {
                     stock = stock - 1;
                     $("#hantei2").val("撃破アイコン");
+                    // 三戦目ボタン活性化
                     $("#3push").prop("disabled", false);
                 }
+                // 白鯨ストックがなかった場合、普通の抽選
                 else {
-                    // 花は好きが出なかったとき
                     if ($("#keizokuritu").val() >= kekka) {
                         $("#hantei2").val("二戦目突破");
                         // 三戦目ボタン活性化
@@ -132,10 +166,17 @@ $(function () {
                     }
                     else {
                         $("#hantei2").val("二戦目敗北");
+                        // 再挑戦ボタン活性化
                         $("#reset").prop("disabled", false);
+                        // 挑戦数を増やす
+                        totalbattle = totalbattle + 1;
+                        $("#allbattle").text(totalbattle);
+                        // 突破率を表示させる
+                        $("#syouhai").show();
                     }
                 }
             }
+            // 二戦目ボタン非活性化
             $("#2push").prop("disabled", true);
         }
     })
@@ -149,28 +190,42 @@ $(function () {
 
         if ($("#keizokuritu").val() != "") {
             var kekka = hiki();
+            // 1/32で花は好きが出現
             if (hana() == 1) {
-                // 1/32で花は好きが出現
+                // 花は好きが再生される
                 $("#hantei3").val("花は好き？");
                 $("#hanasuki").get(0).load();
                 $("#hanasuki").get(0).play();
                 $("#hanasuki").show();
-                $("#reset").prop("disabled", false);
+                // 勝利数を増やす
+                syouri = syouri + 1;
+                $("#katiCount").text(syouri);
             }
+            // 花は好きが出現しなかった場合
             else {
-                // 花は好きが出なかったとき
                 if ($("#keizokuritu").val() >= kekka) {
                     $("#hantei3").val("三戦目突破");
+                    // 勝利動画が再生される
                     $("#victory").get(0).load();
                     $("#victory").get(0).play();
                     $("#victory").show();
+                    // 勝利数を増やす
+                    syouri = syouri + 1;
+                    $("#katiCount").text(syouri);
                 }
                 else {
                     $("#hantei3").val("三戦目敗北");
                 }
             }
-            $("#3push").prop("disabled", true);
+            // 再挑戦ボタン活性化
             $("#reset").prop("disabled", false);
+            // 三戦目プッシュ非活性化
+            $("#3push").prop("disabled", true);
+            // 挑戦数を増やす
+            totalbattle = totalbattle + 1;
+            $("#allbattle").text(totalbattle);
+            // 突破率を表示させる
+            $("#syouhai").show();
         }
     })
 
@@ -213,7 +268,6 @@ $(function () {
         var keyCode = event.keyCode;
 
         // ファンクションキーを制御する
-        // 制限を掛けたくない場合は対象から外す
         if (keyCode == 123) // F12キーの制御
         {
             return false;
