@@ -199,6 +199,26 @@ $(function () {
         count = 3;
         stock = 0;
     })
+
+    // 右クリック禁止
+    $(function () {
+        $('body').on('contextmenu', function (e) {
+            return false;
+        });
+    });
+
+    // F12禁止
+    $(document).keydown(function (event) {
+        // クリックされたキーのコード
+        var keyCode = event.keyCode;
+
+        // ファンクションキーを制御する
+        // 制限を掛けたくない場合は対象から外す
+        if (keyCode == 123) // F12キーの制御
+        {
+            return false;
+        }
+    });
 });
 
 // 継続率抽選
