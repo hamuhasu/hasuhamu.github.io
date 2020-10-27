@@ -39,7 +39,6 @@
             <label id="allbattle"></label>
           </div>
           <br>
-          <audio src="hakugei.mp3" hidden id="hakugeibgm"></audio>
         </div>
       </div>
 
@@ -61,6 +60,8 @@
         <div>
           <input type="button" value="継続率抽選" id="Start" disabled class="button">
         </div><br>
+        <audio src="hakugei.mp3" hidden id="hakugeibgm"></audio>
+        <audio src="rush.mp3" hidden id="rushbgm"></audio>
         <video controls style="display: none;" src="sinimodori.mp4" id="sinimodori" class="video"></video>
         <video controls style="display: none;" src="hanasuki.mp4" id="hanasuki" class="video"></video>
         <video controls style="display: none;" src="victory.mp4" id="victory" class="video"></video>
@@ -101,6 +102,12 @@
       <div>
         <input type="button" value="再挑戦" id="reset" disabled class="button replay">
       </div>
+
+      <!-- ラッシュアイコン -->
+      <div>
+        <img src="rushaikon.png" style="display: none;" id="rushaikon" class="rushaikon">
+      </div>
+
     </div>
   </center>
 </body>

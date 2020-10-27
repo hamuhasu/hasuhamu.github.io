@@ -5,7 +5,15 @@ $(function () {
     $("#title").click(function () {
         $("#hakugeibgm").get(0).load();
         $("#hakugeibgm").get(0).play();
-    })
+    });
+
+    // ラッシュアイコン押下時BGMが鳴る
+    $("#rushaikon").click(function () {
+        $("#rushbgm").get(0).load();
+        $("#rushbgm").get(0).play();
+        $("#hanasuki").get(0).pause();
+        $("#victory").get(0).pause();
+    });
 
     var array = [];
     var count = 3;
@@ -43,7 +51,7 @@ $(function () {
             $("#ru-reto").prop("disabled", true);
             $("#Start").prop("disabled", false);
         }
-    })
+    });
 
     // 継続率抽選ボタン押下時
     $("#Start").click(function () {
@@ -55,7 +63,7 @@ $(function () {
 
         var result = Keizoku();
         $("#keizokuritu").val(result);
-    })
+    });
 
     // 一戦目抽選
     $("#1push").click(function () {
@@ -78,6 +86,8 @@ $(function () {
                 $("#allbattle").text(totalbattle);
                 // 突破率を表示させる
                 $("#syouhai").show();
+                // ゼロカラッシュアイコン表示させる
+                $("#rushaikon").show();
             }
             // 花は好きが出現しなかった場合
             else {
@@ -124,7 +134,7 @@ $(function () {
             }
             $("#1push").prop("disabled", true);
         }
-    })
+    });
 
     // 二戦目抽選
     $("#2push").click(function () {
@@ -147,6 +157,8 @@ $(function () {
                 $("#allbattle").text(totalbattle);
                 // 突破率を表示させる
                 $("#syouhai").show();
+                // ゼロカラッシュアイコン表示させる
+                $("#rushaikon").show();
             }
             // 花は好きが出現しなかった場合
             else {
@@ -179,7 +191,7 @@ $(function () {
             // 二戦目ボタン非活性化
             $("#2push").prop("disabled", true);
         }
-    })
+    });
 
     // 三戦目抽選
     $("#3push").click(function () {
@@ -200,6 +212,8 @@ $(function () {
                 // 勝利数を増やす
                 syouri = syouri + 1;
                 $("#katiCount").text(syouri);
+                // ゼロカラッシュアイコン表示させる
+                $("#rushaikon").show();
             }
             // 花は好きが出現しなかった場合
             else {
@@ -212,6 +226,8 @@ $(function () {
                     // 勝利数を増やす
                     syouri = syouri + 1;
                     $("#katiCount").text(syouri);
+                    // ゼロカラッシュアイコン表示させる
+                    $("#rushaikon").show();
                 }
                 else {
                     $("#hantei3").val("三戦目敗北");
@@ -227,7 +243,7 @@ $(function () {
             // 突破率を表示させる
             $("#syouhai").show();
         }
-    })
+    });
 
     // 再挑戦押下時
     $("#reset").click(function () {
@@ -253,7 +269,9 @@ $(function () {
         array = [];
         count = 3;
         stock = 0;
-    })
+        // ゼロカラッシュアイコン非表示させる
+        $("#rushaikon").hide();
+    });
 
     // 右クリック禁止
     $(function () {
