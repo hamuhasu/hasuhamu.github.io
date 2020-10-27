@@ -285,13 +285,13 @@ var Keizoku = function () {
             countUp = countUp + aikoknloop(33);
         }
         else if (result[i] == "青") {
-            countUp = countUp + aikoknloop(50);
+            countUp = countUp + 5 + aikoknloop(50);
         }
         else if (result[i] == "黄") {
-            countUp = countUp + aikoknloop(66);
+            countUp = countUp + 5 + aikoknloop(66);
         }
         else if (result[i] == "緑") {
-            countUp = countUp + aikoknloop(86);
+            countUp = countUp + 5 + aikoknloop(86);
         }
         else if (result[i] == "撃破") {
             stock = stock + 1;
