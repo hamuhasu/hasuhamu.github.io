@@ -60,10 +60,12 @@ $(function () {
             result = 100;
         }
 
-        if (result > 0) {
+        if (result == 100) {
             // 継続率を表示する
-            $("#keizokuritu").val(result);
-            $("#keizokuritu").addClass('rainbow');
+            $("#keizokuritu").val(result).addClass('rainbow');
+        }
+        else if (result >= 0) {
+            $("#keizokuritu").val(result).addClass('rainbow');
         }
     });
 
