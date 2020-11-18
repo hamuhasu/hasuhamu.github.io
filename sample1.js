@@ -24,19 +24,10 @@ $(function () {
     // ルーレットボタン押下時
     $("#ru-reto").click(function () {
         if (count == 3) {
-            switch (siroaikon()) {
-                case 1:
-                    array.push("白");
-                    $("#zerokara").val(array);
-                    count = count - 1;
-                    break;
-                case 2:
-                    var kekka = aikon();
-                    array.push(kekka);
-                    $("#zerokara").val(array);
-                    count = count - 2;
-                    break;
-            }
+            //必ず白アイコンがゲットできるように変更
+            array.push("白");
+            $("#zerokara").val(array);
+            count = count - 1;
         }
         else if (count == 2) {
             var kekka = aikon();
@@ -61,8 +52,19 @@ $(function () {
         // 一戦目ボタン活性化
         $("#1push").prop("disabled", false);
 
+        // 継続率を計算する
         var result = Keizoku();
-        $("#keizokuritu").val(result);
+
+        // 継続率が100%超えたら上限を100％にする
+        if (result >= 100) {
+            result = 100;
+        }
+
+        if (result > 0) {
+            // 継続率を表示する
+            $("#keizokuritu").val(result);
+            $("#keizokuritu").addClass('rainbow');
+        }
     });
 
     // 一戦目抽選
@@ -311,6 +313,12 @@ var Keizoku = function () {
         else if (result[i] == "緑") {
             countUp = countUp + 5 + aikoknloop(86);
         }
+        else if (result[i] == "赤") {
+            countUp = countUp + 5 + aikoknloop(95);
+        }
+        else if (result[i] == "鬼") {
+            countUp = countUp + 5 + aikoknloop(99);
+        }
         else if (result[i] == "撃破") {
             stock = stock + 1;
         }
@@ -339,13 +347,19 @@ var hana = function () {
 // アイコン抽選（文字）
 var aikon = function () {
     var result = aikontyuusen();
-    if (result > 75) {
+    if (result == 7) {
+        return "鬼";
+    }
+    else if (result > 990) {
+        return "赤";
+    }
+    else if (result > 750) {
         return "撃破";
     }
-    else if (result > 62) {
+    else if (result > 620) {
         return "黄";
     }
-    else if (result > 15) {
+    else if (result > 150) {
         return "緑";
     }
     else if (result > 0) {
@@ -356,16 +370,7 @@ var aikon = function () {
 // アイコン抽選（数値）
 var aikontyuusen = function () {
     var min = 1;
-    var max = 100;
-
-    var a = Math.floor(Math.random() * (max + 1 - min)) + min;
-    return a;
-}
-
-// 白アイコン(数値)
-var siroaikon = function () {
-    var min = 1;
-    var max = 2;
+    var max = 1000;
 
     var a = Math.floor(Math.random() * (max + 1 - min)) + min;
     return a;
