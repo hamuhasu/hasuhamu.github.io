@@ -62,10 +62,27 @@ $(function () {
 
         if (result == 100) {
             // 継続率を表示する
-            $("#keizokuritu").val(result).addClass('rainbow');
+            $("#keizokuritu").val(result);
+            $("#keizokuritu").addClass('rainbow');
         }
-        else if (result >= 0) {
-            $("#keizokuritu").val(result).addClass('rainbow');
+        else if (result >= 90) {
+            $("#keizokuritu").val(result);
+            $("#keizokuritu").css('color', 'purple');
+        }
+        else if (result >= 80) {
+            $("#keizokuritu").val(result);
+            $("#keizokuritu").css('color', 'red');
+        }
+        else if (result >= 70) {
+            $("#keizokuritu").val(result);
+            $("#keizokuritu").css('color', 'lime');
+        }
+        else if (result >= 60) {
+            $("#keizokuritu").val(result);
+            $("#keizokuritu").css('color', 'blue');
+        }
+        else {
+            $("#keizokuritu").val(result);
         }
     });
 
