@@ -83,6 +83,7 @@ $(function () {
         }
         else {
             $("#keizokuritu").val(result);
+            $("#keizokuritu").css('color', 'black');
         }
     });
 
@@ -292,6 +293,7 @@ $(function () {
         stock = 0;
         // ゼロカラッシュアイコン非表示させる
         $("#rushaikon").hide();
+        $("#keizokuritu").removeClass('rainbow');
     });
 
     // 右クリック禁止
